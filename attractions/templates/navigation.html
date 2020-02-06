@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>数智</title>
+		<meta name="description" content="Blue One Page Creative HTML5 Template">
+		<meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
+		<meta name="author" content="Muhammad Morshed">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+		<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+		<script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
+		<script src="{%  static 'js/jquery.fancybox.pack.js' %}"></script>
+
+		<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+		<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+		<script src="{% static 'js/jquery.ba-cond.min.js' %}"></script>
+		<script src="{% static 'js/wow.min.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+	</head>
+
+	<body  style="{% static 'background.jpg' %}">
+
+		<header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+			<div class="container">
+				<div class="navbar-header">
+
+					<h1 class="navbar-brand">
+						<a href="#">数智</a>
+					</h1>
+				</div>
+
+				<nav class="collapse navbar-collapse navbar-right" role="navigation">
+					<ul id="nav" class="nav navbar-nav">
+						<li>
+							<a href="" class="active" style="">首页</a>
+						</li>
+						<li>
+							<a href="">产品介绍</a>
+						</li>
+						<li>
+							<a href="">景区导航</a>
+						</li>
+						<li>
+							<a href="">数据接口</a>
+						</li>
+						<li>
+							<a href=""> 注册/登陆</a>
+						</li>
+
+						<li>
+							<a href="">作者简介</a>
+						</li>
+
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+<br />
+<br />
+		<main class="site-content" role="main" >
+
+			<section id="portfolio">
+				<div class="container">
+
+				<div class="row pad-botm" style="width: 100%;">
+					<form style="width: 100%;text-align: center;">
+						<input id="appname" type="text" style="width: 70%;min-height: 50px;border: 0;  outline: none;" placeholder="输入您想要查询的地点，如深圳欢乐谷" />
+						<input id="seach-button" type="button" onclick="" value="搜索" style="color: white;border: 0;background-color: rgb(0, 147, 254);width: auto;min-height: 50px;" />
+					</form>
+				</div>
+
+					<div class="row">
+
+						<div class="sec-title text-center wow animated fadeInDown">
+
+						</div>
+						<br />
+						<br />
+						<br />
+						<ul class="project-wrapper wow animated fadeInUp">
+							<li class="portfolio-item">
+								<img src="img/portfolio/scence.png" class="img-responsive" alt="">
+								<ul class="external">
+									<li>
+										<a class="fancybox" title="省份" data-fancybox-group="works" href="img/portfolio/scence.png"><i class="fa fa-search"></i></a>
+									</li>
+
+								</ul>
+							</li>
+
+							<li class="portfolio-item">
+								<img src="img/portfolio/traffic.png" class="img-responsive" alt="交通分析报告是针对城市交通路况的一款免费研究平台。是以高德百度海量用户和行业专业浮动车数据相结合的交通数据分享平台。
+采用“拥堵延时指数”作为城市拥堵程度的评价指标，即城市居民平均一次出行实际旅行时间与自由流状态下旅行时间的比值。该指数从交通出行者角度出发，以简单易懂的方式表达交通拥堵给出行者带来的时间成本。此报告客观地从多维度反映城市的交通拥堵状况，力争做到精准、精细、精确，为公众交通出行、机构研究、政府决策提供有价值的理论参考依据。">
+								<figcaption class="mask">
+									<h3>城市实况</h3>
+									<p>实时监测城市交通，空气状况等数据变化情况 </p>
+								</figcaption>
+								<ul class="external">
+									<li>
+										<a class="fancybox" title="城市实况" href="img/portfolio/traffic.png" data-fancybox-group="works"><i class="fa fa-search"></i></a>
+									</li>
+									<li>
+										<a href="traffic/index.html"><i class="fa fa-link"></i></a>
+									</li>
+								</ul>
+							</li>
+
+							<li class="portfolio-item">
+								<img src="img/portfolio/mobile.png" class="img-responsive" alt="结合数据挖掘，我们可以更加精准的分析了解应用用户特征/用户行为，方便建模分析，以便更好更多地服务于大多数用户">
+								<figcaption class="mask">
+									<h3>开源接口</h3>
+									<p>免费提供高质量数据接口</p>
+								</figcaption>
+								<ul class="external">
+									<li>
+										<a class="fancybox" title="终端用户画像" data-fancybox-group="works" href="img/portfolio/mobile.png"><i class="fa fa-search"></i></a>
+									</li>
+									<li>
+										<a href="mobile/index.html"><i class="fa fa-link"></i></a>
+									</li>
+								</ul>
+							</li>
+
+						</ul>
+
+					</div>
+				</div>
+			</section>
+
+
+		</main>
+
+	</body>
+
+</html>
