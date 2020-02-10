@@ -1,14 +1,26 @@
 {% extends 'navigationbase.html' %}
+
 {% block navigation_content %}
     {% for object in  provinces %}
 
-        <li class="portfolio-item" href="{% url 'attractions:attraction_list'  %}?pk={{ object.id }}">
+        <li class="portfolio-item" id="pk{{ object.id }}">
+            <a href="{% url 'attractions:attraction_list' %}?pk={{ object.id }}" target="_self"></a>
             <img src="{{ MEDIA_URL }}{{ object.pic }}" class="img-responsive"
-                 alt="{{ object.province }}。">
-            <figcaption class="mask">
+                 alt="{{ object.province }}。" onclick="f('pk{{ object.id }}')">
+            <figcaption class="mask" onclick="f('pk{{ object.id }}')">
                 <h3>{{ object.province }}</h3>
                 {#  <p>{{ object.province }}景点有xx </p>#}
             </figcaption>
+            <script type="text/javascript">
+
+                function f(pid) {
+                    var a = document.getElementById(pid);
+                    a.getElementsByTagName('a')[0].click();
+
+                }
+
+
+            </script>
         </li>
 
     {% endfor %}
