@@ -97,52 +97,19 @@
                 <br/>
                 <br/>
                 <ul class="project-wrapper wow animated fadeInUp">
-                    <li class="portfolio-item">
-                        <img src="{% static 'background.jpg' %}" class="img-responsive" alt="">
-                        <ul class="external">
-                            <li>
-                                <a class="fancybox" title="省份" data-fancybox-group="works"
-                                   href="{% static 'background.jpg' %}"><i class="fa fa-search"></i></a>
-                            </li>
+                    {% for object in  object_list %}
 
-                        </ul>
-                    </li>
+                        <li class="portfolio-item">
+                            <img src="{{ MEDIA_URL }}{{ object.pic }}" class="img-responsive"
+                                 alt="{{ object.province }}。">
+                            <figcaption class="mask">
+                                <h3>{{ object.province }}</h3>
+{#                                <p>{{ object.province }}景点有xx </p>#}
+                            </figcaption>
+                        </li>
 
-                    <li class="portfolio-item">
-                        <img src="{% static 'background.jpg' %}" class="img-responsive" alt="交通分析报告是针对城市交通路况的一款免费研究平台。是以高德百度海量用户和行业专业浮动车数据相结合的交通数据分享平台。
-采用“拥堵延时指数”作为城市拥堵程度的评价指标，即城市居民平均一次出行实际旅行时间与自由流状态下旅行时间的比值。该指数从交通出行者角度出发，以简单易懂的方式表达交通拥堵给出行者带来的时间成本。此报告客观地从多维度反映城市的交通拥堵状况，力争做到精准、精细、精确，为公众交通出行、机构研究、政府决策提供有价值的理论参考依据。">
-                        <figcaption class="mask">
-                            <h3>城市实况</h3>
-                            <p>实时监测城市交通，空气状况等数据变化情况 </p>
-                        </figcaption>
-                        <ul class="external">
-                            <li>
-                                <a class="fancybox" title="城市实况" href="{% static 'background.jpg' %}"
-                                   data-fancybox-group="works"><i class="fa fa-search"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-link"></i></a>
-                            </li>
-                        </ul>
-                    </li>
+                    {% endfor %}
 
-                    <li class="portfolio-item">
-                        <img src="{% static 'background.jpg' %}" class="img-responsive"
-                             alt="结合数据挖掘，我们可以更加精准的分析了解应用用户特征/用户行为，方便建模分析，以便更好更多地服务于大多数用户">
-                        <figcaption class="mask">
-                            <h3>开源接口</h3>
-                            <p>免费提供高质量数据接口</p>
-                        </figcaption>
-                        <ul class="external">
-                            <li>
-                                <a class="fancybox" title="终端用户画像" data-fancybox-group="works"
-                                   href="{% static 'background.jpg' %}"><i class="fa fa-search"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-link"></i></a>
-                            </li>
-                        </ul>
-                    </li>
 
                 </ul>
 
