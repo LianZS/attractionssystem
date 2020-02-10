@@ -1,0 +1,81 @@
+{% extends 'navigationbase.html' %}
+{% block navigation_content %}
+    {% for object in  attraction_list %}
+
+        <li class="portfolio-item">
+            <img src="{{ MEDIA_URL }}{{ object.img }}" class="img-responsive"
+                 alt="{{ object.attraction_name }}。">
+            <figcaption class="mask">
+                <h3>{{ object.city.city_name }}{{ object.attraction_name }}</h3>
+                {#  <p>{{ object.province }}景点有xx </p>#}
+            </figcaption>
+        </li>
+
+    {% endfor %}
+{% endblock %}
+{% block page_content %}
+
+    {% if page_obj.has_previous %}
+        <li>
+            <a href="{% url 'attractions:attraction_list' %}?p={{ page_obj.previous_page_number }}">上一页</a>
+        </li>
+
+    {% else %}
+        <li class="disabled">
+            <a href="javascript:void(0)" aria-label="Previous">
+                <span aria-hidden="true">上一页</span>
+            </a>
+        </li>
+    {% endif %}
+
+
+    {% if left_has_more %}
+        <li><a href="{% url 'attractions:attraction_list' %}?p=1">1</a></li>
+
+        <li><a href="javascript:void(0) ">.....</a></li>
+    {% endif %}
+    {% for page in left_pages %}
+
+        <li><a href="{% url 'attractions:attraction_list' %}?p={{ page }}">{{ page }}</a></li>
+
+
+
+    {% endfor %}
+    <li class="active"><a
+            href="{% url 'attractions:attraction_list' %}?p={{ current_page }}">{{ current_page }}</a>
+    </li>
+
+    {% for page in right_pages %}
+        {% if page == page_obj.number %}
+            <li class="active">
+                <a href="{% url 'attractions:attraction_list' %}?p={{ page }}">{{ page }}</a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'attractions:attraction_list' %}?p={{ page }}">{{ page }}</a></li>
+
+
+        {% endif %}
+
+    {% endfor %}
+    {% if right_has_more %}
+        <li><a href="javascript:void(0) ">.....</a></li>
+        <li><a href="{% url 'attractions:attraction_list' %}?p={{ num_pages }}">{{ num_pages }}</a>
+        </li>
+
+    {% endif %}
+
+    {% if page_obj.has_next %}
+        <li>
+            <a href="{% url 'attractions:attraction_list' %}?p={{ page_obj.next_page_number }}">下一页</a>
+        </li>
+
+    {% else %}
+        <li class="disabled">
+            <a href="javascript:void(0)" aria-label="Next">
+                <span aria-hidden="true">下一页</span>
+            </a>
+        </li>
+    {% endif %}
+
+{% endblock %}
+
