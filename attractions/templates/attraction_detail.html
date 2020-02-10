@@ -1,0 +1,222 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>数智</title>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static 'css/attraction_style.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script language="javascript"
+            src="https://webapi.amap.com/maps?v=1.4.13&key=209b01c1d0a6f0270d5efb521e29f758&plugin=Map3D,AMap.DistrictLayer,AMap.Scale,AMap.ToolBar"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+
+    <script src="{% static 'js/draw.js' %}"></script>
+
+
+</head>
+
+<body style="background-color: #011a33;">
+<header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <h1 class="navbar-brand">
+                <a href="">数智</a>
+            </h1>
+        </div>
+
+        <nav class="collapse navbar-collapse navbar-right" role="navigation">
+            <ul id="nav" class="nav navbar-nav">
+                <li>
+                    <a href="">首页</a>
+                </li>
+                <li>
+                    <a href="">智慧景区</a>
+                </li>
+                <li>
+                    <a href="">城市实况</a>
+                </li>
+                <li>
+                    <a href="">终端画像</a>
+                </li>
+                <li>
+                    <a href="">智虫文本</a>
+                </li>
+                <li>
+                    <a href="">智虫音乐</a>
+                </li>
+                <li>
+                    <a href="">PDF转换器</a>
+                </li>
+                <li>
+                    <a href=""> 数据接口</a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+</header>
+<main class="site-content" role="main">
+    <div class="navbar navbar-inverse set-radius-zero" style="background-color: black;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="container">
+
+            <div class="row pad-botm">
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="alert alert-info back-widget-set text-center">
+                        <i class="fa fa-car fa-5x" style="color:#00E5FF;"></i>
+                        <h3 style="color: aquamarine;" id="traffic"></h3> 交通情况
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="alert alert-success back-widget-set text-center">
+                        <i class="fa fa-cloud fa-5x" style="color: white;"></i>
+                        <h3 style="color: aquamarine;" id="weather"></h3> 天气状况
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="alert alert-warning back-widget-set text-center">
+                        <i class="fa fa-tree fa-5x" style="color: lawngreen;"></i>
+                        <h3 style="color: aquamarine;" id="cost"></h3> 空气情况
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="alert alert-danger back-widget-set text-center">
+                        <i class="fa fa-university fa-5x"></i>
+                        <h3 style="color: aquamarine;" id="environment"></h3> 娱乐场景
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="container">
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                            <div class="carousel slide" id="carousel-447043">
+                                <ol class="carousel-indicators">
+                                    <li class="active" data-slide-to="0" data-target="#carousel-447043">
+                                    </li>
+                                    <li data-slide-to="1" data-target="#carousel-447043">
+                                    </li>
+                                    <li data-slide-to="2" data-target="#carousel-447043">
+                                    </li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img alt=""
+                                             src="http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/1/default.jpg"/>
+
+                                    </div>
+                                    <div class="item">
+                                        <img alt=""
+                                             src="http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/2/default.jpg"/>
+
+                                    </div>
+                                    <div class="item">
+                                        <img alt=""
+                                             src="http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/3/default.jpg"/>
+
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#carousel-447043" data-slide="prev"><span
+                                        class="glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#carousel-447043" data-slide="next"><span
+                                        class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="panel panel-default" style="background-color: transparent;">
+                        <div class="panel-heading panel-success" style="background-color: #dff0d8;">
+                            评价雷达
+                        </div>
+                        <div id='evaluate'></div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12" style="background-color: transparent;">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            实时客流量
+                        </div>
+                        <div id="scence"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success" style="visibility: hidden;">
+                <div class="panel-heading">
+                    景区人流密度分布图
+                </div>
+                <div id='container' style="width: auto;max-height: 700px;">
+                </div>
+
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    实时交通情况
+                </div>
+                <div id="trend-index" style="height: 300px;"></div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    景区关键词搜索频率
+                </div>
+                <div id="search-index"></div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<script language=javascript type="text/javascript">
+    //固定写法
+    window.onload = function () {
+
+        {#new CityInfoRequest();#}
+
+    }
+</script>
+
+</body>
+
+</html>
