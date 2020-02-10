@@ -34,7 +34,7 @@
     <script src="{% static 'js/main.js' %}"></script>
 </head>
 
-<body style="{% static 'background.jpg' %}">
+<body style="{% static 'img/background.jpg' %}">
 
 <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
     <div class="container">
@@ -97,18 +97,8 @@
                 <br/>
                 <br/>
                 <ul class="project-wrapper wow animated fadeInUp">
-                    {% for object in  object_list %}
-
-                        <li class="portfolio-item">
-                            <img src="{{ MEDIA_URL }}{{ object.pic }}" class="img-responsive"
-                                 alt="{{ object.province }}。">
-                            <figcaption class="mask">
-                                <h3>{{ object.province }}</h3>
-{#                                <p>{{ object.province }}景点有xx </p>#}
-                            </figcaption>
-                        </li>
-
-                    {% endfor %}
+                    {% block navigation_content %}
+                    {% endblock %}
 
 
                 </ul>
@@ -118,67 +108,8 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
 
-                        {% if page_obj.has_previous %}
-                            <li>
-                                <a href="{% url 'attractions:province_list' %}?p={{ page_obj.previous_page_number }}">上一页</a>
-                            </li>
-
-                        {% else %}
-                            <li class="disabled">
-                                <a href="javascript:void(0)" aria-label="Previous">
-                                    <span aria-hidden="true">上一页</span>
-                                </a>
-                            </li>
-                        {% endif %}
-
-
-                        {% if left_has_more %}
-                            <li><a href="{% url 'attractions:province_list' %}?p=1">1</a></li>
-
-                            <li><a href="javascript:void(0) ">.....</a></li>
-                        {% endif %}
-                        {% for page in left_pages %}
-
-                            <li><a href="{% url 'attractions:province_list' %}?p={{ page }}">{{ page }}</a></li>
-
-
-
-                        {% endfor %}
-                        <li class="active"><a
-                                href="{% url 'attractions:province_list' %}?p={{ current_page }}">{{ current_page }}</a>
-                        </li>
-
-                        {% for page in right_pages %}
-                            {% if page == page_obj.number %}
-                                <li class="active">
-                                    <a href="{% url 'attractions:province_list' %}?p={{ page }}">{{ page }}</a>
-                                </li>
-                            {% else %}
-                                <li><a href="{% url 'attractions:province_list' %}?p={{ page }}">{{ page }}</a></li>
-
-
-                            {% endif %}
-
-                        {% endfor %}
-                        {% if right_has_more %}
-                            <li><a href="javascript:void(0) ">.....</a></li>
-                            <li><a href="{% url 'attractions:province_list' %}?p={{ num_pages }}">{{ num_pages }}</a>
-                            </li>
-
-                        {% endif %}
-
-                        {% if page_obj.has_next %}
-                            <li>
-                                <a href="{% url 'attractions:province_list' %}?p={{ page_obj.next_page_number }}">下一页</a>
-                            </li>
-
-                        {% else %}
-                            <li class="disabled">
-                                <a href="javascript:void(0)" aria-label="Next">
-                                    <span aria-hidden="true">下一页</span>
-                                </a>
-                            </li>
-                        {% endif %}
+                        {% block page_content %}
+                        {% endblock %}
 
                     </ul>
                 </nav>
