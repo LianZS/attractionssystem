@@ -18,8 +18,14 @@ class CityInfo(models.Model):
     """
     城市信息
     """
+    CHOICE = [('B', 'BaiDu'), ('G', 'GaoDe')]
+
     province = models.ForeignKey(to=ProvinceInfo, on_delete=models.CASCADE, related_name="city_info")
     city_name = models.CharField(max_length=32, verbose_name="景区所处城市名", db_column='city')
+    pid = models.IntegerField(verbose_name="城市标示")
+    longitude = models.FloatField(verbose_name="经度")
+    latitude = models.FloatField(verbose_name="纬度")
+    source = models.CharField(max_length=1, verbose_name="交通数据来源", choices=CHOICE)
 
     class Meta:
         db_table = 'cityInfo'
@@ -39,12 +45,17 @@ class AttractionInfo(models.Model):
     """
     景区信息
     """
+    CHOICE = [('B', 'BaiDu'), ('T', 'TengXun')]
+
     city = models.ForeignKey(to=CityInfo, on_delete=models.CASCADE, related_name='attraction_info')
     pid = models.IntegerField(verbose_name="景区标示")
     attraction_name = models.CharField(max_length=32, db_column='attraction', verbose_name="景区名")
     img = models.ImageField(upload_to='media/attraction', null=True, verbose_name="景区图片")
+    longitude = models.FloatField(verbose_name="经度")
+    latitude = models.FloatField(verbose_name="纬度")
     geographic = models.TextField(verbose_name="景区经纬度范围", help_text="存储景区经纬度范围的字典数据{{longitude,latitude},,,,,}")
     tags = models.ManyToManyField(to=AttractionTagInfo, related_name='tags')
+    source = models.CharField(max_length=1, verbose_name="景区数据来源", choices=CHOICE)
 
     class Meta:
         db_table = 'attractionInfo'
@@ -60,6 +71,20 @@ class RealTimeAttractionPersonTraffic(models.Model):
 
     class Meta:
         db_table = 'attraction_person_traffic'
+
+
+class RealTimeAttractionPopulationDistribution(models.Model):
+    """
+    景区人口密度分布
+    """
+    attraction = models.ForeignKey(to=AttractionInfo, on_delete=models.CASCADE, related_name='population_distribution')
+    collect_datetime = models.DateTimeField(verbose_name="采集数据时间", help_text="")
+    longitude = models.FloatField(verbose_name="经度")
+    latitude = models.FloatField(verbose_name="纬度")
+    num = models.IntegerField(verbose_name="", help_text="某个经纬度上的人数")
+
+    class Meta:
+        db_table = 'population_distribution'
 
 
 class RealTimeCityTraffic(models.Model):
@@ -92,26 +117,12 @@ class RealTimeAttractionAirState(models.Model):
         db_table = 'air_state'
 
 
-class RealTimeAttractionPopulationDistribution(models.Model):
-    """
-    景区人口密度分布
-    """
-    attraction = models.ForeignKey(to=AttractionInfo, on_delete=models.CASCADE, related_name='population_distribution')
-    collect_datetime = models.DateTimeField(verbose_name="采集数据时间", help_text="")
-    longitude = models.FloatField()
-    latitude = models.FloatField()
-    num = models.IntegerField(verbose_name="", help_text="某个经纬度上的人数")
-
-    class Meta:
-        db_table = 'population_distribution'
-
-
 class HeatSource(models.Model):
     """
     搜索热度数据来源
     """
-    CHOIC = [('B', 'BaiDu'), ('W', 'WeiXin'), ('S', 'SouGou')]
-    way = models.CharField(max_length=1, verbose_name="搜索热度来源", choices=CHOIC)
+    CHOICE = [('B', 'BaiDu'), ('W', 'WeiXin'), ('S', 'SouGou')]
+    way = models.CharField(max_length=1, verbose_name="搜索热度来源", choices=CHOICE)
 
     class Meta:
         db_table = 'heat_source'
