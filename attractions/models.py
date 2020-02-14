@@ -7,8 +7,8 @@ class ProvinceInfo(models.Model):
     """
     省份信息
     """
-    province = models.CharField(max_length=32)
-    pic = models.ImageField(upload_to='media/img/')
+    province = models.CharField(max_length=32,unique=True)
+    pic = models.ImageField(upload_to='media/img/',null=True)
 
     class Meta:
         db_table = 'provinceInfo'
@@ -18,10 +18,10 @@ class CityInfo(models.Model):
     """
     城市信息
     """
-    CHOICE = [('B', 'BaiDu'), ('G', 'GaoDe')]
+    CHOICE = [('B', 'BaiDu'), ('G', 'GaoDe'),('D','DaiDing')]
 
     province = models.ForeignKey(to=ProvinceInfo, on_delete=models.CASCADE, related_name="city_info")
-    city_name = models.CharField(max_length=32, verbose_name="景区所处城市名", db_column='city')
+    city_name = models.CharField(max_length=32, verbose_name="景区所处城市名", db_column='city',unique=True)
     pid = models.IntegerField(verbose_name="城市标示")
     longitude = models.FloatField(verbose_name="经度")
     latitude = models.FloatField(verbose_name="纬度")
